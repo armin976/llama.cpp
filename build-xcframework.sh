@@ -524,19 +524,20 @@ combine_static_libraries "build-tvos-device" "Release-appletvos" "tvos" "false"
 
 # Create XCFramework with correct debug symbols paths
 echo "Creating XCFramework..."
+ROOT_DIR="$(pwd)"
 xcodebuild -create-xcframework \
-    -framework $(pwd)/build-ios-sim/framework/llama.framework \
-    -debug-symbols $(pwd)/build-ios-sim/dSYMs/llama.dSYM \
-    -framework $(pwd)/build-ios-device/framework/llama.framework \
-    -debug-symbols $(pwd)/build-ios-device/dSYMs/llama.dSYM \
-    -framework $(pwd)/build-macos/framework/llama.framework \
-    -debug-symbols $(pwd)/build-macos/dSYMS/llama.dSYM \
-    -framework $(pwd)/build-visionos/framework/llama.framework \
-    -debug-symbols $(pwd)/build-visionos/dSYMs/llama.dSYM \
-    -framework $(pwd)/build-visionos-sim/framework/llama.framework \
-    -debug-symbols $(pwd)/build-visionos-sim/dSYMs/llama.dSYM \
-    -framework $(pwd)/build-tvos-device/framework/llama.framework \
-    -debug-symbols $(pwd)/build-tvos-device/dSYMs/llama.dSYM \
-    -framework $(pwd)/build-tvos-sim/framework/llama.framework \
-    -debug-symbols $(pwd)/build-tvos-sim/dSYMs/llama.dSYM \
-    -output $(pwd)/build-apple/llama.xcframework
+    -framework "${ROOT_DIR}/build-ios-sim/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-ios-sim/dSYMs/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-ios-device/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-ios-device/dSYMs/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-macos/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-macos/dSYMS/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-visionos/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-visionos/dSYMs/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-visionos-sim/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-visionos-sim/dSYMs/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-tvos-device/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-tvos-device/dSYMs/llama.dSYM" \
+    -framework "${ROOT_DIR}/build-tvos-sim/framework/llama.framework" \
+    -debug-symbols "${ROOT_DIR}/build-tvos-sim/dSYMs/llama.dSYM" \
+    -output "${ROOT_DIR}/build-apple/llama.xcframework"
